@@ -2,37 +2,51 @@ import { motion } from "framer-motion";
 
 const features = [
   {
-    id: 1,
-    title: "Fast & Reliable",
-    desc: "Superfast performance with minimal load times.",
+    title: "High-Fidelity Sound",
+    description:
+      "Experience immersive and crystal-clear audio for a premium listening experience.",
   },
   {
-    id: 2,
-    title: "User-Friendly",
-    desc: "Easy-to-use interface designed for everyone.",
+    title: "Premium Build Quality",
+    description:
+      "Crafted with durable, high-end materials for long-lasting use.",
   },
   {
-    id: 3,
-    title: "Affordable",
-    desc: "Best pricing for top-quality features.",
+    title: "Wireless & Long Battery Life",
+    description:
+      "Enjoy uninterrupted playback for hours with advanced battery technology.",
   },
 ];
 
-const Features = () => (
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center p-6">
-    {features.map((feature, index) => (
-      <motion.div
-        key={feature.id}
-        className="bg-white p-4 rounded-lg shadow-md"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.2 }}
-      >
-        <h3 className="text-xl font-semibold">{feature.title}</h3>
-        <p className="text-gray-600 mt-2">{feature.desc}</p>
-      </motion.div>
-    ))}
-  </div>
-);
+const FeatureSection = () => {
+  return (
+    <section className="bg-[--color-grey-light] py-16 px-6 md:px-12">
+      <div className="max-w-5xl mx-auto text-center">
+        <h2 className="text-3xl font-bold text-[--color-black] mb-8">
+          Why Choose Our Headphones?
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="p-6 bg-[--color-white] rounded-lg shadow-lg"
+            >
+              <h3 className="text-xl font-semibold text-[--color-black-light]">
+                {feature.title}
+              </h3>
+              <p className="text-[--color-border-grey] mt-2">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
-export default Features;
+export default FeatureSection;
