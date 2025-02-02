@@ -12,7 +12,6 @@ interface CartProps {
 }
 const Cart = ({ items }: CartProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [cartItems, setCartItems] = useState(items);
   let total = 0;
   return (
     <>
@@ -29,7 +28,7 @@ const Cart = ({ items }: CartProps) => {
           <Backdrop onClick={() => setIsOpen(false)} />
           <div className="absolute bg-white top-[100px] z-30 right-0 left-0 w-[90%] mx-auto rounded-lg p-7 max-w-[380px] md:right-12 md:mr-0">
             <div className="flex justify-between">
-              <H6>cart ({cartItems.length})</H6>
+              <H6>cart ({items.length})</H6>
               <button
                 onClick={() => {}}
                 className=" text-border-grey underline"
@@ -37,7 +36,7 @@ const Cart = ({ items }: CartProps) => {
                 Remove all
               </button>
             </div>
-            {cartItems.map((item: any, _index) => {
+            {items.map((item: any, _index) => {
               total = total + item.price * item.amount;
               return (
                 <div className="flex flex-row my-6" key={item.slug}>
